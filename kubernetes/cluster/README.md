@@ -5,4 +5,5 @@
 kubectl create namespace rocketmq
 kubectl label nodes kube04 node-role.kubernetes.io/rocketmq=true
 kubectl label nodes kube05 node-role.kubernetes.io/rocketmq=true
+kubectl apply -f rocketmq-broker-storageclass.yaml
 ```
