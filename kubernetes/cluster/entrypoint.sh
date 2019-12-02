@@ -1,15 +1,9 @@
 #!/bin/bash
 
 if [[ ${POD_NAME} != "" ]]; then
-    POD_NUMBER=${HOSTNAME##*-}
-    BROKER_NAME=broker'-'${POD_NUMBER}
+    POD_NUMBER=${POD_NAME#*${STATEFULSET_NAME}'-'}
+    BROKER_NAME=${BROKER_NAME_PREFIX}'-'${POD_NUMBER}
 fi
-
-BROKER_ROLE="SYNC_MASTER"
-if [[ $POD_NUMBER == 1 ]]; then
-    BROKER_ROLE="SLAVE"
-fi
-
 
 BROKER_CONFIG=""
 
@@ -32,14 +26,14 @@ if [[ ${BROKER_IP2} != "" ]]; then
 fi
 
 
+
 cat > ${ROCKETMQ_HOME}/conf/broker.conf <<EOF
 #集群名称
 brokerClusterName=${BROKER_CLUSTER_NAME}
 #broker名称
 brokerName=${BROKER_NAME}
 #0 表示Master,>0 表示Slave
-
-brokerId=${POD_NUMBER}
+brokerId=${BROKER_ID}
 #broker角色 ASYNC_MASTER为异步主节点，SYNC_MASTER为同步主节点，SLAVE为从节点
 brokerRole=${BROKER_ROLE}
 #刷新数据到磁盘的方式，ASYNC_FLUSH刷新
