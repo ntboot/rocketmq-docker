@@ -89,7 +89,7 @@ spec:
               fieldPath: metadata.name
 
         volumeMounts:
-        - name: host-volume-rocketmq-broker-master-prod
+        - name: data
           mountPath: /opt/rocketmq/store
         - name: entrypoint
           mountPath: /opt/rocketmq-4.3.1/bin/entrypoint.sh
@@ -130,7 +130,7 @@ spec:
           
   volumeClaimTemplates:
   - metadata:
-      name: host-volume-rocketmq-broker-master-prod
+      name: data
     spec:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: rocketmq-broker
