@@ -91,6 +91,8 @@ spec:
         volumeMounts:
         - name: host-volume-rocketmq-broker-master-prod
           mountPath: /opt/rocketmq/store
+        - name: entrypoint
+          mountPath: /opt/rocketmq-4.3.1/bin/entrypoint.sh
 
         readinessProbe:
           tcpSocket:
@@ -120,8 +122,18 @@ spec:
 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-
+      
       volumes:
-      - name: host-volume-rocketmq-broker-master-prod
+      - name: host-volume-rocketmq-broker-slave-prod
         hostPath:
-          path: /mnt/data/rocketmq-master
+          path: /opt/rocketmq-4.3.1/bin/entrypoint.sh
+          
+  volumeClaimTemplates:
+  - metadata:
+      name: host-volume-rocketmq-broker-master-prod
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: rocketmq-broker
+      resources:
+        requests:
+          storage: 5Gi
