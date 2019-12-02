@@ -60,8 +60,6 @@ spec:
 
       containers:
       - image: registry.cn-hangzhou.aliyuncs.com/szss/rocketmq-broker:v4.3.1
-        securityContext:
-          privileged: true
         imagePullPolicy: Always
         name: container-rocketmq-broker-master-prod
         ports:
