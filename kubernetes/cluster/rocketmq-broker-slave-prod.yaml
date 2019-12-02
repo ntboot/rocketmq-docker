@@ -124,7 +124,7 @@ spec:
       volumes:
       - name: entrypoint
         hostPath:
-          path: /opt/rocketmq-4.3.1/bin/entrypoint_slave.sh
+          path: /opt/rocketmq-4.3.1/bin/entrypoint.sh
           
   volumeClaimTemplates:
   - metadata:
