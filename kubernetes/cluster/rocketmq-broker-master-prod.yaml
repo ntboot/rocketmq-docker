@@ -124,9 +124,9 @@ spec:
       restartPolicy: Always
       
       volumes:
-      - name: host-volume-rocketmq-broker-slave-prod
+      - name: entrypoint
         hostPath:
-          path: /opt/rocketmq-4.3.1/bin/entrypoint.sh
+          path: /opt/rocketmq-4.3.1/bin/entrypoint_master.sh
           
   volumeClaimTemplates:
   - metadata:
