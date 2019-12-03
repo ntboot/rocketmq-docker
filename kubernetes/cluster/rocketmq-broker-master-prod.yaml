@@ -59,7 +59,7 @@ spec:
         node-role.kubernetes.io/rocketmq: "true"
 
       containers:
-      - image: registry.cn-hangzhou.aliyuncs.com/szss/rocketmq-broker:v4.3.1
+      - image: 15214338239/rocketmq-broker:v4.3.1
         imagePullPolicy: Always
         name: container-rocketmq-broker-master-prod
         ports:
