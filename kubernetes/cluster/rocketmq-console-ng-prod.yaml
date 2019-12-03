@@ -50,7 +50,7 @@ spec:
         app: pod-rocketmq-console-ng-prod
     spec:
       containers:
-      - image: styletang/rocketmq-console-ng
+      - image: 15214338239/rocketmq-console-ng
         securityContext:
           privileged: true
         imagePullPolicy: IfNotPresent
